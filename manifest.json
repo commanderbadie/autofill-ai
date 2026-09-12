@@ -1,0 +1,32 @@
+{
+  "manifest_version": 3,
+  "name": "Apex AutoFill",
+  "version": "0.5.0",
+  "description": "V5: Detects form fields, reads the PDF, uses AI to extract values, and fills the form for manual review before submit — theapexdatasolution.com",
+  "permissions": ["storage"],
+  "host_permissions": [
+    "https://theapexdatasolution.com/*",
+    "https://openrouter.ai/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://theapexdatasolution.com/*"],
+      "js": ["vendor/pdf.min.js", "content.js"],
+      "css": ["styles.css"],
+      "run_at": "document_idle",
+      "all_frames": true
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["vendor/pdf.worker.min.js"],
+      "matches": ["https://theapexdatasolution.com/*"]
+    }
+  ]
+}

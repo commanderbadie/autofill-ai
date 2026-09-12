@@ -1,0 +1,284 @@
+/* Highlight every field the content script successfully mapped */
+input.apex-autofill-detected {
+  outline: 2px solid #22c55e !important;
+  outline-offset: 1px;
+  background-color: #f0fdf4 !important;
+}
+
+/* Filled by V4/V5 — stands out from plain detection so it's obvious
+   what actually got typed in and needs a manual check. */
+input.apex-autofill-filled {
+  outline: 3px solid #f59e0b !important;
+  outline-offset: 1px;
+  background-color: #fffbeb !important;
+}
+
+/* Floating summary button, bottom-right so it never blocks the form */
+#apex-autofill-btn {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 999999;
+  background: #16a34a;
+  color: #fff;
+  border: none;
+  border-radius: 999px;
+  padding: 10px 18px;
+  font-size: 14px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+}
+
+#apex-autofill-btn:hover {
+  background: #15803d;
+}
+
+/* Second floating button, stacked above the fields-detected one */
+#apex-autofill-pdf-btn {
+  position: fixed;
+  bottom: 72px;
+  right: 24px;
+  z-index: 999999;
+  background: #2563eb;
+  color: #fff;
+  border: none;
+  border-radius: 999px;
+  padding: 10px 18px;
+  font-size: 14px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+}
+
+#apex-autofill-pdf-btn:hover:not(:disabled) {
+  background: #1d4ed8;
+}
+
+#apex-autofill-pdf-btn:disabled {
+  background: #9ca3af;
+  cursor: not-allowed;
+}
+
+/* Third floating button, stacked above the PDF one */
+#apex-autofill-ai-btn {
+  position: fixed;
+  bottom: 120px;
+  right: 24px;
+  z-index: 999999;
+  background: #7c3aed;
+  color: #fff;
+  border: none;
+  border-radius: 999px;
+  padding: 10px 18px;
+  font-size: 14px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+}
+
+#apex-autofill-ai-btn:hover:not(:disabled) {
+  background: #6d28d9;
+}
+
+#apex-autofill-ai-btn:disabled {
+  background: #9ca3af;
+  cursor: not-allowed;
+}
+
+/* Fourth floating button, stacked above the AI extract one */
+#apex-autofill-fill-btn {
+  position: fixed;
+  bottom: 168px;
+  right: 24px;
+  z-index: 999999;
+  background: #f59e0b;
+  color: #111827;
+  border: none;
+  border-radius: 999px;
+  padding: 10px 18px;
+  font-size: 14px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-weight: 700;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+}
+
+#apex-autofill-fill-btn:hover {
+  background: #d97706;
+  color: #fff;
+}
+
+/* Summary panel listing every detected field */
+#apex-autofill-panel {
+  position: fixed;
+  bottom: 220px;
+  right: 24px;
+  z-index: 999999;
+  width: 360px;
+  max-height: 55vh;
+  overflow-y: auto;
+  background: #ffffff;
+  border: 1px solid #d1d5db;
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* PDF text panel */
+#apex-autofill-pdf-panel {
+  position: fixed;
+  bottom: 220px;
+  right: 24px;
+  z-index: 999999;
+  width: 420px;
+  max-height: 60vh;
+  overflow-y: auto;
+  background: #ffffff;
+  border: 1px solid #d1d5db;
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* AI-extracted results panel */
+#apex-autofill-ai-panel {
+  position: fixed;
+  bottom: 220px;
+  right: 24px;
+  z-index: 999999;
+  width: 400px;
+  max-height: 60vh;
+  overflow-y: auto;
+  background: #ffffff;
+  border: 1px solid #d1d5db;
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.apex-autofill-panel-header-purple {
+  background: #7c3aed !important;
+}
+
+.apex-autofill-ai-row {
+  align-items: flex-start;
+}
+
+.apex-autofill-ai-value {
+  flex: 1;
+  color: #111827;
+  text-align: right;
+  font-weight: 500;
+}
+
+.apex-autofill-ai-value-empty {
+  flex: 1;
+  color: #d1d5db;
+  text-align: right;
+  font-style: italic;
+}
+
+.apex-autofill-pdf-panel-body {
+  padding: 8px 14px;
+}
+
+.apex-autofill-pdf-page {
+  margin-bottom: 10px;
+}
+
+.apex-autofill-pdf-page-title {
+  font-size: 11px;
+  font-weight: 700;
+  color: #2563eb;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  margin-bottom: 4px;
+}
+
+.apex-autofill-pdf-page pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  font-size: 11px;
+  line-height: 1.5;
+  color: #111827;
+  background: #f9fafb;
+  border: 1px solid #f3f4f6;
+  border-radius: 6px;
+  padding: 8px;
+  margin: 0;
+}
+
+.apex-autofill-panel-header {
+  background: #16a34a;
+  color: #fff;
+  font-weight: 600;
+  font-size: 13px;
+  padding: 10px 10px 10px 14px;
+  border-radius: 10px 10px 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.apex-autofill-panel-close {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: #fff;
+  width: 22px;
+  height: 22px;
+  min-width: 22px;
+  border-radius: 6px;
+  font-size: 16px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.apex-autofill-panel-close:hover {
+  background: rgba(255, 255, 255, 0.35);
+}
+
+.apex-autofill-panel-list {
+  padding: 8px 0;
+}
+
+.apex-autofill-panel-row {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  padding: 5px 14px;
+  font-size: 12px;
+  color: #111827;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.apex-autofill-panel-index {
+  color: #9ca3af;
+  min-width: 18px;
+}
+
+.apex-autofill-panel-label {
+  flex: 1;
+  font-weight: 500;
+}
+
+.apex-autofill-panel-name {
+  color: #6b7280;
+  font-family: "SFMono-Regular", Consolas, monospace;
+}
+
+.apex-autofill-panel-footer {
+  padding: 8px 14px;
+  font-size: 11px;
+  color: #6b7280;
+  border-top: 1px solid #f3f4f6;
+  font-style: italic;
+}
